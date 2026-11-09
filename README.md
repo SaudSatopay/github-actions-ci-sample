@@ -11,7 +11,7 @@ The workflow lives in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 | Requirement | How it is met |
 | --- | --- |
 | Runs lint, tests and build on every pull request | Triggers on `pull_request` (plus pushes to `main` and manual runs). Steps: `npm run lint` → `npm run typecheck` → `npm test` → `npm run build`. |
-| Caches dependencies | `actions/setup-node@v4` with `cache: npm` caches the npm download cache, keyed on `package-lock.json`. `npm ci` then installs from that cache. |
+| Caches dependencies | `actions/setup-node@v7` with `cache: npm` caches the npm download cache, keyed on `package-lock.json`. `npm ci` then installs from that cache. |
 | A failing test makes the run fail | `npm test` runs `vitest run`, which exits with a non-zero code when any test fails. GitHub Actions stops the job at that step and marks the run (and the PR check) as failed, and the build step is skipped. |
 | Status badge | The badge at the top of this README shows the result of the latest run on `main`. |
 
